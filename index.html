@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zeston Mattresses — Demo Storefront</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF;color:#0E1B3D;font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#E2583A;text-decoration:none}a:hover{color:#0E1B3D}
+button{font-family:inherit;cursor:pointer}input,select{font-family:inherit}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#FFFFFF;color:#0E1B3D;font-family:'DM Sans',system-ui,sans-serif">
+
+<div style="background:#0E1B3D;color:#FFFFFF;font-size:13px;text-align:center;padding:9px 16px;letter-spacing:.02em"><span style="font-weight:700;color:#FFB59F">Black Friday Sale</span> · Up to 35% off mattresses + extra 10% with code SLEEP10 · Ends in 02d 14h 36m</div>
+
+<header style="position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid #E3E7EE">
+  <div style="max-width:1280px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:28px;flex-wrap:wrap">
+    <button onClick="{{ goHome }}" style="background:none;border:0;padding:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:28px;font-weight:800;color:#0E1B3D;letter-spacing:-.04em">zeston</button>
+    <nav style="display:flex;gap:22px;flex:1;flex-wrap:wrap;row-gap:4px;font-size:15px;font-weight:500">
+      <button onClick="{{ goShop }}" style="background:none;border:0;padding:6px 0;color:#0E1B3D;font-size:15px;font-weight:500;white-space:nowrap">Mattresses</button>
+      <button onClick="{{ goShop }}" style="background:none;border:0;padding:6px 0;color:#0E1B3D;font-size:15px;font-weight:500;white-space:nowrap">Pillows &amp; bundles</button>
+      <button onClick="{{ openQuiz }}" style="background:none;border:0;padding:6px 0;color:#0E1B3D;font-size:15px;font-weight:500;white-space:nowrap">Sleep quiz</button>
+      <button onClick="{{ openCustom }}" style="background:none;border:0;padding:6px 0;color:#0E1B3D;font-size:15px;font-weight:500;white-space:nowrap">Custom size</button>
+      <button onClick="{{ goB2B }}" style="background:none;border:0;padding:6px 0;color:#5A6170;font-size:15px;font-weight:500;white-space:nowrap">For business</button>
+    </nav>
+    <div style="display:flex;align-items:center;gap:12px;flex:0 1 300px;min-width:0">
+      <input placeholder="Search mattresses" style="flex:1 1 140px;min-width:0;width:100%;padding:10px 16px;border:1px solid #E3E7EE;border-radius:999px;background:#fff;font-size:14px;outline:none">
+      <button onClick="{{ goCheckout }}" style="display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:0;background:#0E1B3D;color:#FFFFFF;font-size:14px;font-weight:600;white-space:nowrap;flex-shrink:0">Cart <span style="background:#FFFFFF;color:#0E1B3D;border-radius:999px;min-width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;font-size:12px">{{ cartCount }}</span></button>
+    </div>
+  </div>
+</header>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<main data-screen-label="01 Home">
+  <section style="max-width:1360px;margin:0 auto;padding:20px 24px 40px">
+    <div style="position:relative;border-radius:24px;overflow:hidden;min-height:600px;background:url('images/mattress-room.webp') center/cover no-repeat #F2F4F8;display:flex;align-items:center;padding:48px">
+
+      <div style="position:relative;background:#fff;border-radius:20px;padding:44px;max-width:540px;display:flex;flex-direction:column;gap:22px;box-shadow:0 24px 60px rgba(14,27,61,.12)">
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><span style="background:#E2583A;color:#fff;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;white-space:nowrap">Black Friday · up to 35% off</span><span style="background:#F2F4F8;color:#0E1B3D;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;white-space:nowrap">★ 4.6 · 3,200+ reviews</span></div>
+        <h1 style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(38px,4.6vw,58px);line-height:1.04;letter-spacing:-.03em;text-wrap:balance">Better sleep, straight from the factory floor.</h1>
+        <p style="margin:0;font-size:18px;line-height:1.6;color:#4A5468;text-wrap:pretty">Zeston has made mattresses for hotels, hospitals and dealers for years. Now you can buy the same mattresses directly, in standard or custom sizes.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <button onClick="{{ goShop }}" style="padding:17px 30px;border-radius:999px;border:0;background:#E2583A;color:#fff;font-size:16px;font-weight:700">Shop the sale</button>
+          <button onClick="{{ openQuiz }}" style="padding:17px 30px;border-radius:999px;border:1.5px solid #0E1B3D;background:transparent;color:#0E1B3D;font-size:16px;font-weight:700">Take the sleep quiz</button>
+        </div>
+        <div style="font-size:13px;color:#6B7385">Free delivery · No-cost EMI · Up to 12-year warranty</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:0 32px 64px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:#E3E7EE;border:1px solid #E3E7EE;border-radius:16px;overflow:hidden">
+      <div style="background:#fff;padding:22px 24px;display:flex;flex-direction:column;gap:4px"><div style="font-weight:600;font-size:16px">Factory-direct pricing</div><div style="font-size:14px;color:#5A6170">No dealer margins in between</div></div>
+      <div style="background:#fff;padding:22px 24px;display:flex;flex-direction:column;gap:4px"><div style="font-weight:600;font-size:16px">Custom sizes on request</div><div style="font-size:14px;color:#5A6170">Any bed, quoted within a day</div></div>
+      <div style="background:#fff;padding:22px 24px;display:flex;flex-direction:column;gap:4px"><div style="font-weight:600;font-size:16px">Up to 12-year warranty</div><div style="font-size:14px;color:#5A6170">Register online in a minute</div></div>
+      <div style="background:#fff;padding:22px 24px;display:flex;flex-direction:column;gap:4px"><div style="font-weight:600;font-size:16px">Delivery check by PIN code</div><div style="font-size:14px;color:#5A6170">Know your date before you pay</div></div>
+    </div>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:0 32px 72px">
+    <div style="display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:24px;flex-wrap:wrap">
+      <h2 style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:36px;letter-spacing:-.025em">Shop by need</h2>
+      <button onClick="{{ goShop }}" style="background:none;border:0;color:#E2583A;font-size:15px;font-weight:600">View all mattresses →</button>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+      <sc-for list="{{ categories }}" as="c" hint-placeholder-count="4">
+        <button onClick="{{ c.go }}" style="text-align:left;border:0;padding:0;background:none;display:flex;flex-direction:column;gap:12px;color:#0E1B3D">
+          <div style="width:100%;aspect-ratio:1/1;border-radius:16px;background:url('{{ c.img }}') center/cover no-repeat #F2F4F8;display:flex;align-items:center;justify-content:center"></div>
+          <div style="font-size:18px;font-weight:600">{{ c.name }}</div>
+          <div style="font-size:14px;color:#5A6170;margin-top:-8px">{{ c.sub }}</div>
+        </button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:0 32px 72px">
+    <h2 style="margin:0 0 24px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:36px;letter-spacing:-.025em">Bestsellers</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
+      <sc-for list="{{ featured }}" as="p" hint-placeholder-count="3">
+        <div style="background:#fff;border:1px solid #E3E7EE;border-radius:16px;overflow:hidden;display:flex;flex-direction:column">
+          <div onClick="{{ p.open }}" style="cursor:pointer;aspect-ratio:4/3;background:url('{{ p.img }}') center/cover no-repeat #F2F4F8;position:relative;display:flex;align-items:center;justify-content:center">
+            
+            <sc-if value="{{ p.tag }}"><span style="position:absolute;top:14px;left:14px;background:#0E1B3D;color:#FFFFFF;font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px">{{ p.tag }}</span></sc-if>
+          </div>
+          <div style="padding:20px;display:flex;flex-direction:column;gap:10px;flex:1">
+            <div style="font-size:12px;color:#5A6170;text-transform:uppercase;letter-spacing:.1em">{{ p.type }} · {{ p.thick }}</div>
+            <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:24px">{{ p.name }}</div>
+            <div style="display:flex;align-items:center;gap:8px"><div style="display:flex;gap:3px"><sc-for list="{{ p.dots }}" as="d"><sc-if value="{{ d.on }}"><span style="width:18px;height:6px;border-radius:3px;background:#E2583A"></span></sc-if><sc-if value="{{ d.off }}"><span style="width:18px;height:6px;border-radius:3px;background:#E3E7EE"></span></sc-if></sc-for></div><span style="font-size:13px;color:#5A6170">{{ p.firmLabel }}</span></div>
+            <div style="font-size:15px;color:#5A6170;line-height:1.5;flex:1">{{ p.short }}</div>
+            <div style="display:flex;align-items:baseline;gap:10px;justify-content:space-between;margin-top:6px">
+              <div style="display:flex;align-items:baseline;gap:8px"><span style="font-size:20px;font-weight:700">{{ p.priceLabel }}</span><span style="font-size:14px;color:#8A8F99;text-decoration:line-through">{{ p.mrpLabel }}</span></div>
+              <button onClick="{{ p.open }}" style="padding:10px 18px;border-radius:999px;border:1.5px solid #0E1B3D;background:transparent;font-size:14px;font-weight:600;color:#0E1B3D">View</button>
+            </div>
+            <div style="font-size:12px;color:#8A8F99">{{ p.sizeNote }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:0 32px 72px;display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:20px">
+    <div style="background:#0E1B3D;color:#FFFFFF;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:16px;justify-content:space-between;min-height:260px">
+      <div style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#B8C3E0;font-weight:600">Sleep quiz</div>
+      <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:34px;line-height:1.15;text-wrap:balance">Not sure which mattress? Answer four questions.</div>
+      <div style="font-size:15px;color:#C9CDD6;line-height:1.5">We match your sleeping position, firmness preference, size and budget to the right Zeston mattress.</div>
+      <div><button onClick="{{ openQuiz }}" style="padding:14px 26px;border-radius:999px;border:0;background:#FFFFFF;color:#0E1B3D;font-size:15px;font-weight:600">Start the quiz</button></div>
+    </div>
+    <div style="background:#fff;border:1px solid #E3E7EE;border-radius:20px;padding:40px;display:grid;grid-template-columns:1fr 160px;gap:24px;align-items:center">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#D2452B;font-weight:600">Bundle offer</div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:30px;line-height:1.15">Mattress + 2 contour pillows</div>
+        <div style="font-size:15px;color:#5A6170;line-height:1.5">Add a pair of Zeston contour pillows to any mattress for ₹1,998 and save ₹800.</div>
+        <div><button onClick="{{ goShop }}" style="padding:12px 22px;border-radius:999px;border:1.5px solid #0E1B3D;background:transparent;font-size:14px;font-weight:600;color:#0E1B3D">Build your bundle</button></div>
+      </div>
+      <div style="aspect-ratio:3/4;border-radius:14px;background:url('images/mattress-corner.webp') center/cover no-repeat #F2F4F8;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px"></div>
+    </div>
+  </section>
+
+  <section id="b2b" style="max-width:1280px;margin:0 auto;padding:0 32px 80px">
+    <div style="border:1px solid #E3E7EE;border-radius:20px;padding:36px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:#F2F4F8">
+      <div style="display:flex;flex-direction:column;gap:8px;max-width:640px">
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:28px">Buying for a hotel, hospital or institution?</div>
+        <div style="font-size:15px;color:#5A6170;line-height:1.5">Zeston continues to supply in bulk. Tell us your quantities and requirements and our business team will get back to you with a quote.</div>
+      </div>
+      <button onClick="{{ b2bToast }}" style="padding:14px 26px;border-radius:999px;border:0;background:#0E1B3D;color:#FFFFFF;font-size:15px;font-weight:600">Send a bulk enquiry</button>
+    </div>
+  </section>
+</main>
+</sc-if>
+
+<sc-if value="{{ isShop }}">
+<main data-screen-label="02 Shop" style="max-width:1280px;margin:0 auto;padding:40px 32px 120px">
+  <div style="font-size:14px;color:#5A6170;margin-bottom:10px">Home / Mattresses</div>
+  <div style="display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:32px">
+    <div>
+      <h1 style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:48px;letter-spacing:-.03em">Mattresses</h1>
+      <div style="font-size:15px;color:#5A6170;margin-top:6px">{{ shopCount }} mattresses · showing {{ shopSizeLabel }} prices · select up to 3 to compare</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:#5A6170">Sort
+      <select value="{{ sort }}" onChange="{{ setSort }}" style="padding:10px 14px;border:1px solid #E3E7EE;border-radius:10px;background:#fff;font-size:14px;color:#0E1B3D">
+        <option value="pop">Recommended</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option>
+      </select>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:240px minmax(0,1fr);gap:40px;align-items:start">
+    <aside style="display:flex;flex-direction:column;gap:28px;position:sticky;top:96px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase">Size</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ sizeChips }}" as="s" hint-placeholder-count="4"><button onClick="{{ s.pick }}" style="padding:8px 14px;border-radius:999px;font-size:14px;border:1px solid {{ s.bd }};background:{{ s.bg }};color:{{ s.fg }}">{{ s.l }}</button></sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase">Firmness</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ firmChips }}" as="f" hint-placeholder-count="4"><button onClick="{{ f.pick }}" style="padding:8px 14px;border-radius:999px;font-size:14px;border:1px solid {{ f.bd }};background:{{ f.bg }};color:{{ f.fg }}">{{ f.l }}</button></sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase">Type</div>
+        <sc-for list="{{ typeChecks }}" as="t" hint-placeholder-count="6">
+          <label style="display:flex;align-items:center;gap:10px;font-size:15px;cursor:pointer"><input type="checkbox" checked="{{ t.on }}" onChange="{{ t.toggle }}" style="width:16px;height:16px;accent-color:#E2583A">{{ t.l }}</label>
+        </sc-for>
+      </div>
+      <div style="border-top:1px solid #E3E7EE;padding-top:20px;display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:15px;font-weight:600">Need a different size?</div>
+        <div style="font-size:14px;color:#5A6170;line-height:1.5">We make mattresses to your exact dimensions.</div>
+        <button onClick="{{ openCustom }}" style="align-self:start;background:none;border:0;padding:0;color:#E2583A;font-size:14px;font-weight:600">Request a custom size →</button>
+      </div>
+    </aside>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px">
+      <sc-for list="{{ shopList }}" as="p" hint-placeholder-count="6">
+        <div style="background:#fff;border:1px solid #E3E7EE;border-radius:16px;overflow:hidden;display:flex;flex-direction:column">
+          <div onClick="{{ p.open }}" style="cursor:pointer;aspect-ratio:4/3;background:url('{{ p.img }}') center/cover no-repeat #F2F4F8;position:relative;display:flex;align-items:center;justify-content:center">
+            
+            <sc-if value="{{ p.tag }}"><span style="position:absolute;top:14px;left:14px;background:#0E1B3D;color:#FFFFFF;font-size:12px;font-weight:600;padding:5px 10px;border-radius:999px">{{ p.tag }}</span></sc-if>
+          </div>
+          <div style="padding:20px;display:flex;flex-direction:column;gap:10px;flex:1">
+            <div style="font-size:12px;color:#5A6170;text-transform:uppercase;letter-spacing:.1em">{{ p.type }} · {{ p.thick }}</div>
+            <div onClick="{{ p.open }}" style="cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:24px">{{ p.name }}</div>
+            <div style="display:flex;align-items:center;gap:8px"><div style="display:flex;gap:3px"><sc-for list="{{ p.dots }}" as="d"><sc-if value="{{ d.on }}"><span style="width:18px;height:6px;border-radius:3px;background:#E2583A"></span></sc-if><sc-if value="{{ d.off }}"><span style="width:18px;height:6px;border-radius:3px;background:#E3E7EE"></span></sc-if></sc-for></div><span style="font-size:13px;color:#5A6170">{{ p.firmLabel }}</span></div>
+            <div style="font-size:15px;color:#5A6170;line-height:1.5;flex:1">{{ p.short }}</div>
+            <div style="display:flex;align-items:baseline;gap:8px"><span style="font-size:20px;font-weight:700">{{ p.priceLabel }}</span><span style="font-size:14px;color:#8A8F99;text-decoration:line-through">{{ p.mrpLabel }}</span><span style="font-size:13px;color:#D2452B;font-weight:600">{{ p.off }}</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #ECEFF4;padding-top:12px;margin-top:4px">
+              <label style="display:flex;align-items:center;gap:8px;font-size:14px;color:#5A6170;cursor:pointer"><input type="checkbox" checked="{{ p.inCompare }}" onChange="{{ p.toggleCompare }}" style="width:16px;height:16px;accent-color:#E2583A">Compare</label>
+              <button onClick="{{ p.open }}" style="background:none;border:0;padding:0;color:#E2583A;font-size:14px;font-weight:600">View details →</button>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <sc-if value="{{ hasCompare }}">
+    <div style="position:fixed;left:50%;transform:translateX(-50%);bottom:24px;z-index:25;background:#0E1B3D;color:#FFFFFF;border-radius:999px;padding:10px 10px 10px 24px;display:flex;align-items:center;gap:18px;box-shadow:0 12px 32px rgba(14,27,61,.25);font-size:14px">
+      <span>Comparing {{ compareCount }} of 3 · {{ compareNames }}</span>
+      <button onClick="{{ clearCompare }}" style="background:none;border:0;color:#B8C3E0;font-size:14px">Clear</button>
+      <button onClick="{{ openCompare }}" style="padding:10px 20px;border-radius:999px;border:0;background:#FFFFFF;color:#0E1B3D;font-size:14px;font-weight:600">Compare now</button>
+    </div>
+  </sc-if>
+</main>
+</sc-if>
+
+<sc-if value="{{ isProduct }}">
+<main data-screen-label="03 Product" style="max-width:1280px;margin:0 auto;padding:32px 32px 80px">
+  <div style="font-size:14px;color:#5A6170;margin-bottom:20px"><button onClick="{{ goShop }}" style="background:none;border:0;padding:0;color:#5A6170;font-size:14px">Mattresses</button> / {{ prod.name }}</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:56px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:12px;position:sticky;top:96px">
+      <div style="aspect-ratio:1/1;border-radius:20px;background:url('{{ prod.img }}') center/cover no-repeat #F2F4F8;display:flex;align-items:center;justify-content:center;position:relative">
+        
+        <sc-if value="{{ prod.tag }}"><span style="position:absolute;top:18px;left:18px;background:#0E1B3D;color:#FFFFFF;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px">{{ prod.tag }}</span></sc-if>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+        <div style="aspect-ratio:1/1;border-radius:12px;background:url('images/mattress-room.webp') center/cover no-repeat #F2F4F8;display:flex;align-items:center;justify-content:center;text-align:center;padding:6px;border:2px solid #0E1B3D"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#6B7385"></span></div>
+        <div style="aspect-ratio:1/1;border-radius:12px;background:url('images/layers.webp') center/cover no-repeat #F2F4F8;display:flex;align-items:center;justify-content:center;text-align:center;padding:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#6B7385"></span></div>
+        <div style="aspect-ratio:1/1;border-radius:12px;background:url('images/features.webp') center/cover no-repeat #F2F4F8;display:flex;align-items:center;justify-content:center;text-align:center;padding:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#6B7385"></span></div>
+        <div style="aspect-ratio:1/1;border-radius:12px;background:url('images/mattress-corner.webp') center/cover no-repeat #F2F4F8;display:flex;align-items:center;justify-content:center;text-align:center;padding:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#6B7385"></span></div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:26px;padding-bottom:40px">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:13px;color:#5A6170;text-transform:uppercase;letter-spacing:.1em">{{ prod.type }} mattress · {{ prod.thick }}</div>
+        <h1 style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:48px;letter-spacing:-.03em;line-height:1.05">Zeston {{ prod.name }}</h1>
+        <div style="font-size:14px;color:#5A6170">★ 4.6 · 312 reviews</div>
+        <p style="margin:6px 0 0;font-size:17px;line-height:1.6;color:#3A4150;text-wrap:pretty">{{ prod.short }} {{ prod.material }}.</p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;justify-content:space-between;font-size:14px"><span style="font-weight:600">Firmness</span><span style="color:#5A6170">{{ prod.firmLabel }}</span></div>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px"><sc-for list="{{ prod.dots }}" as="d"><sc-if value="{{ d.on }}"><div style="height:8px;border-radius:4px;background:#E2583A"></div></sc-if><sc-if value="{{ d.off }}"><div style="height:8px;border-radius:4px;background:#E3E7EE"></div></sc-if></sc-for></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:#8A8F99"><span>Soft</span><span>Firm</span></div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;justify-content:space-between;font-size:14px"><span style="font-weight:600">Size</span><span style="color:#5A6170">Dimensions in inches (L × W)</span></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px">
+          <sc-for list="{{ sizeOpts }}" as="s" hint-placeholder-count="4">
+            <button onClick="{{ s.pick }}" style="text-align:left;padding:12px 14px;border-radius:12px;border:1.5px solid {{ s.bd }};background:{{ s.bg }};display:flex;flex-direction:column;gap:2px;color:#0E1B3D"><span style="font-size:15px;font-weight:600">{{ s.l }}</span><span style="font-size:12px;color:#5A6170">{{ s.d }}</span></button>
+          </sc-for>
+          <button onClick="{{ openCustom }}" style="text-align:left;padding:12px 14px;border-radius:12px;border:1.5px dashed #AAB2C2;background:transparent;display:flex;flex-direction:column;gap:2px;color:#0E1B3D"><span style="font-size:15px;font-weight:600">Custom</span><span style="font-size:12px;color:#5A6170">Get a quote</span></button>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+        <span style="font-size:36px;font-weight:700;letter-spacing:-.01em">{{ prodPrice }}</span>
+        <span style="font-size:17px;color:#8A8F99;text-decoration:line-through">{{ prodMrp }}</span>
+        <span style="font-size:14px;color:#D2452B;font-weight:600">{{ prodOff }}</span>
+        <span style="font-size:13px;color:#5A6170;width:100%">Inclusive of all taxes · No-cost EMI available on select cards</span>
+      </div>
+
+      <div style="background:#fff;border:1px solid #E3E7EE;border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:14px;font-weight:600">Check delivery</div>
+        <div style="display:flex;gap:8px">
+          <input value="{{ pin }}" onChange="{{ setPin }}" maxlength="6" placeholder="Enter 6-digit PIN code" style="flex:1;min-width:0;padding:12px 14px;border:1px solid #E3E7EE;border-radius:10px;font-size:15px;outline:none;background:#F7F8FB">
+          <button onClick="{{ checkPin }}" style="padding:0 20px;border-radius:10px;border:1.5px solid #0E1B3D;background:transparent;font-size:14px;font-weight:600;color:#0E1B3D">Check</button>
+        </div>
+        <sc-if value="{{ pinOk }}"><div style="font-size:14px;color:#2E6B4A;font-weight:500">✓ {{ pinMsg }}</div></sc-if>
+        <sc-if value="{{ pinBad }}"><div style="font-size:14px;color:#9A4A2A;font-weight:500">{{ pinMsg }}</div></sc-if>
+      </div>
+
+      <label style="display:flex;gap:14px;align-items:center;padding:16px 18px;border-radius:14px;border:1.5px solid {{ bundleBd }};background:{{ bundleBg }};cursor:pointer">
+        <input type="checkbox" checked="{{ bundle }}" onChange="{{ toggleBundle }}" style="width:18px;height:18px;accent-color:#E2583A">
+        <div style="width:52px;height:52px;border-radius:10px;flex-shrink:0;background:url('images/mattress-corner-sm.webp') center/cover no-repeat #F2F4F8"></div>
+        <div style="display:flex;flex-direction:column;gap:2px;flex:1"><span style="font-size:15px;font-weight:600">Add 2 contour pillows</span><span style="font-size:13px;color:#5A6170">Bundle price ₹1,998 · save ₹800</span></div>
+      </label>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <button onClick="{{ addToCart }}" style="padding:17px;border-radius:999px;border:1.5px solid #0E1B3D;background:transparent;color:#0E1B3D;font-size:16px;font-weight:600">Add to cart</button>
+        <button onClick="{{ buyNow }}" style="padding:17px;border-radius:999px;border:0;background:#E2583A;color:#fff;font-size:16px;font-weight:600">Buy now</button>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#E3E7EE;border:1px solid #E3E7EE;border-radius:14px;overflow:hidden;font-size:13px">
+        <div style="background:#F7F8FB;padding:14px;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:14px">{{ prod.warranty }}</span><span style="color:#5A6170">Warranty</span></div>
+        <div style="background:#F7F8FB;padding:14px;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:14px">Made to order</span><span style="color:#5A6170">In Zeston's factory</span></div>
+        <div style="background:#F7F8FB;padding:14px;display:flex;flex-direction:column;gap:2px"><span style="font-weight:600;font-size:14px">Free delivery</span><span style="color:#5A6170">Serviceable PINs</span></div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;border-top:1px solid #E3E7EE;padding-top:8px">
+        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:24px;padding:16px 0 10px">Specifications</div>
+        <sc-for list="{{ specs }}" as="r" hint-placeholder-count="6">
+          <div style="display:grid;grid-template-columns:150px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid #ECEFF4;font-size:15px"><span style="color:#5A6170">{{ r.k }}</span><span>{{ r.v }}</span></div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button onClick="{{ compareThis }}" style="padding:12px 20px;border-radius:999px;border:1px solid #E3E7EE;background:#fff;font-size:14px;font-weight:600;color:#0E1B3D">Compare with other mattresses</button>
+        <button onClick="{{ warrantyToast }}" style="padding:12px 20px;border-radius:999px;border:1px solid #E3E7EE;background:#fff;font-size:14px;font-weight:600;color:#0E1B3D">Register a warranty</button>
+      </div>
+    </div>
+  </div>
+</main>
+</sc-if>
+
+<sc-if value="{{ isCheckout }}">
+<main data-screen-label="04 Checkout" style="max-width:1180px;margin:0 auto;padding:40px 32px 100px">
+  <sc-if value="{{ showPlaced }}">
+    <div style="max-width:620px;margin:40px auto;background:#fff;border:1px solid #E3E7EE;border-radius:24px;padding:48px;display:flex;flex-direction:column;gap:18px;text-align:center;align-items:center">
+      <div style="width:56px;height:56px;border-radius:50%;background:#E3EEE7;color:#2E6B4A;display:flex;align-items:center;justify-content:center;font-size:26px">✓</div>
+      <h1 style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:40px">Order placed</h1>
+      <div style="font-size:16px;color:#5A6170;line-height:1.6">Order <strong style="color:#0E1B3D">ZST-240117</strong> · {{ total }} paid via {{ payLabel }}.<br>Your mattress goes into production today. We'll send updates on WhatsApp and email.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;margin-top:8px">
+        <button onClick="{{ warrantyToast }}" style="padding:15px;border-radius:999px;border:1.5px solid #0E1B3D;background:transparent;font-size:15px;font-weight:600;color:#0E1B3D">Register warranty</button>
+        <button onClick="{{ resetOrder }}" style="padding:15px;border-radius:999px;border:0;background:#E2583A;color:#fff;font-size:15px;font-weight:600">Continue shopping</button>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ showEmpty }}">
+    <div style="max-width:520px;margin:60px auto;text-align:center;display:flex;flex-direction:column;gap:16px;align-items:center">
+      <h1 style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:40px">Your cart is empty</h1>
+      <div style="color:#5A6170">Take the quiz or browse our mattresses to get started.</div>
+      <button onClick="{{ goShop }}" style="padding:15px 28px;border-radius:999px;border:0;background:#E2583A;color:#fff;font-size:15px;font-weight:600">Shop mattresses</button>
+    </div>
+  </sc-if>
+  <sc-if value="{{ showForm }}">
+    <h1 style="margin:0 0 28px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:44px;letter-spacing:-.02em">Checkout</h1>
+    <div style="display:grid;grid-template-columns:minmax(0,1.4fr) minmax(320px,1fr);gap:40px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="background:#fff;border:1px solid #E3E7EE;border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 16px"><div style="font-size:18px;font-weight:600;white-space:nowrap">1. Contact</div><span style="font-size:14px;color:#5A6170">Checking out as guest · <a href="#">Log in</a></span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <input placeholder="Mobile number" defaultValue="+91 98200 41736" style="padding:14px;border:1px solid #E3E7EE;border-radius:10px;font-size:15px;background:#F7F8FB">
+            <input placeholder="Email" defaultValue="ananya.r@gmail.com" style="padding:14px;border:1px solid #E3E7EE;border-radius:10px;font-size:15px;background:#F7F8FB">
+          </div>
+          <label style="display:flex;gap:10px;align-items:center;font-size:14px;color:#5A6170"><input type="checkbox" defaultChecked="{{ true }}" style="accent-color:#E2583A">Send order updates on WhatsApp</label>
+        </div>
+        <div style="background:#fff;border:1px solid #E3E7EE;border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:12px">
+          <div style="font-size:18px;font-weight:600;margin-bottom:4px">2. Delivery address</div>
+          <input placeholder="Full name" defaultValue="Ananya Rao" style="padding:14px;border:1px solid #E3E7EE;border-radius:10px;font-size:15px;background:#F7F8FB">
+          <input placeholder="House no., building, street" defaultValue="B-702, Lakeview Residency, Hiranandani Gardens" style="padding:14px;border:1px solid #E3E7EE;border-radius:10px;font-size:15px;background:#F7F8FB">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+            <input placeholder="PIN code" defaultValue="400076" style="padding:14px;border:1px solid #E3E7EE;border-radius:10px;font-size:15px;background:#F7F8FB">
+            <input placeholder="City" defaultValue="Mumbai" style="padding:14px;border:1px solid #E3E7EE;border-radius:10px;font-size:15px;background:#F7F8FB">
+            <input placeholder="State" defaultValue="Maharashtra" style="padding:14px;border:1px solid #E3E7EE;border-radius:10px;font-size:15px;background:#F7F8FB">
+          </div>
+          <div style="font-size:14px;color:#2E6B4A;font-weight:500">✓ Delivers to 400076 by Thu, 3 Dec · free delivery</div>
+        </div>
+        <div style="background:#fff;border:1px solid #E3E7EE;border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:10px">
+          <div style="font-size:18px;font-weight:600;margin-bottom:6px">3. Payment</div>
+          <sc-for list="{{ payOpts }}" as="o" hint-placeholder-count="5">
+            <button onClick="{{ o.pick }}" style="display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:12px;border:1.5px solid {{ o.bd }};background:{{ o.bg }};text-align:left;color:#0E1B3D">
+              <span style="width:18px;height:18px;border-radius:50%;border:2px solid #0E1B3D;display:flex;align-items:center;justify-content:center;flex-shrink:0"><sc-if value="{{ o.on }}"><span style="width:8px;height:8px;border-radius:50%;background:#0E1B3D"></span></sc-if></span>
+              <span style="display:flex;flex-direction:column;gap:2px;flex:1"><span style="font-size:15px;font-weight:600">{{ o.l }}</span><span style="font-size:13px;color:#5A6170">{{ o.d }}</span></span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #E3E7EE;border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:18px;position:sticky;top:96px">
+        <div style="font-size:18px;font-weight:600">Order summary</div>
+        <sc-for list="{{ cartItems }}" as="c" hint-placeholder-count="2">
+          <div style="display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:start">
+            <div style="width:64px;height:64px;border-radius:10px;background:url('images/mattress-corner-sm.webp') center/cover no-repeat #F2F4F8"></div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-size:15px;font-weight:600">{{ c.name }}</span>
+              <span style="font-size:13px;color:#5A6170">{{ c.sub }}</span>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:4px">
+                <div style="display:flex;align-items:center;border:1px solid #E3E7EE;border-radius:999px"><button onClick="{{ c.dec }}" style="width:28px;height:28px;border:0;background:none;font-size:16px;color:#0E1B3D">−</button><span style="font-size:14px;min-width:16px;text-align:center">{{ c.qty }}</span><button onClick="{{ c.inc }}" style="width:28px;height:28px;border:0;background:none;font-size:16px;color:#0E1B3D">+</button></div>
+                <button onClick="{{ c.remove }}" style="background:none;border:0;padding:0;font-size:13px;color:#5A6170;text-decoration:underline">Remove</button>
+              </div>
+            </div>
+            <span style="font-size:15px;font-weight:600">{{ c.lineLabel }}</span>
+          </div>
+        </sc-for>
+        <div style="display:flex;gap:8px">
+          <input value="{{ coupon }}" onChange="{{ setCoupon }}" placeholder="Coupon code" style="flex:1;min-width:0;padding:12px 14px;border:1px solid #E3E7EE;border-radius:10px;font-size:14px;background:#F7F8FB;text-transform:uppercase">
+          <button onClick="{{ applyCoupon }}" style="flex-shrink:0;white-space:nowrap;padding:0 18px;border-radius:10px;border:1.5px solid #0E1B3D;background:transparent;font-size:14px;font-weight:600;color:#0E1B3D">Apply</button>
+        </div>
+        <sc-if value="{{ couponMsg }}"><div style="font-size:13px;color:#5A6170;margin-top:-8px">{{ couponMsg }}</div></sc-if>
+        <div style="display:flex;flex-direction:column;gap:10px;border-top:1px solid #ECEFF4;padding-top:16px;font-size:15px">
+          <div style="display:flex;justify-content:space-between"><span style="color:#5A6170">Subtotal</span><span>{{ subtotal }}</span></div>
+          <sc-if value="{{ couponOn }}"><div style="display:flex;justify-content:space-between;color:#2E6B4A"><span>SLEEP10 discount</span><span>− {{ discount }}</span></div></sc-if>
+          <div style="display:flex;justify-content:space-between"><span style="color:#5A6170">Delivery</span><span>Free</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:20px;font-weight:700;padding-top:8px;border-top:1px solid #ECEFF4"><span>Total</span><span>{{ total }}</span></div>
+          <div style="font-size:12px;color:#8A8F99">Inclusive of GST</div>
+        </div>
+        <button onClick="{{ placeOrder }}" style="padding:18px;border-radius:999px;border:0;background:#E2583A;color:#fff;font-size:16px;font-weight:600">Place order · {{ total }}</button>
+      </div>
+    </div>
+  </sc-if>
+</main>
+</sc-if>
+
+<footer style="border-top:1px solid #E3E7EE;background:#F2F4F8">
+  <div style="max-width:1280px;margin:0 auto;padding:48px 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;font-size:14px;color:#5A6170">
+    <div style="display:flex;flex-direction:column;gap:10px"><div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:24px;color:#0E1B3D">Zeston</div><div style="line-height:1.6">Mattresses made in India by Zeston, delivered direct.</div></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><div style="color:#0E1B3D;font-weight:600">Shop</div><span>Mattresses</span><span>Pillows</span><span>Bundles</span><span>Custom sizes</span></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><div style="color:#0E1B3D;font-weight:600">Support</div><span>Warranty registration</span><span>Shipping &amp; delivery</span><span>Returns</span><span>FAQs</span></div>
+    <div style="display:flex;flex-direction:column;gap:8px"><div style="color:#0E1B3D;font-weight:600">Company</div><span>About Zeston</span><span>Bulk &amp; B2B enquiries</span><span>Contact</span><span>Privacy &amp; terms</span></div>
+  </div>
+</footer>
+
+<sc-if value="{{ quizOpen }}">
+  <div style="position:fixed;inset:0;z-index:50;background:rgba(14,27,61,.5);display:flex;align-items:center;justify-content:center;padding:24px">
+    <div style="width:100%;max-width:620px;background:#FFFFFF;border-radius:24px;padding:36px;display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#E2583A;font-weight:600">{{ quizStepLabel }}</span>
+        <button onClick="{{ closeQuiz }}" style="background:none;border:0;font-size:22px;color:#5A6170;line-height:1">×</button>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px"><sc-for list="{{ quizBars }}" as="b"><div style="height:4px;border-radius:2px;background:{{ b.c }}"></div></sc-for></div>
+      <sc-if value="{{ quizAsking }}">
+        <h2 style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:32px;line-height:1.15">{{ quizQ }}</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <sc-for list="{{ quizOpts }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.pick }}" style="padding:20px;border-radius:14px;border:1.5px solid #E3E7EE;background:#fff;font-size:16px;font-weight:500;text-align:left;color:#0E1B3D" style-hover="border-color:#0E1B3D">{{ o.l }}</button></sc-for>
+        </div>
+        <sc-if value="{{ quizCanBack }}"><button onClick="{{ quizBack }}" style="align-self:start;background:none;border:0;padding:0;color:#5A6170;font-size:14px">← Back</button></sc-if>
+        <div style="font-size:12px;color:#8A8F99">Recommendations are based on product attributes and are not medical advice.</div>
+      </sc-if>
+      <sc-if value="{{ quizDone }}">
+        <h2 style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:32px;line-height:1.15">Your best match is the Zeston {{ rec.name }}</h2>
+        <div style="background:#fff;border:1px solid #E3E7EE;border-radius:16px;padding:20px;display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center">
+          <div style="aspect-ratio:1/1;border-radius:12px;background:url('{{ rec.img }}') center/cover no-repeat #F2F4F8"></div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <div style="font-size:12px;color:#5A6170;text-transform:uppercase;letter-spacing:.1em">{{ rec.type }} · {{ rec.firmLabel }}</div>
+            <div style="font-size:15px;color:#3A4150;line-height:1.5">{{ rec.short }}</div>
+            <div style="font-size:20px;font-weight:700">{{ recPrice }} <span style="font-size:13px;color:#5A6170;font-weight:400">{{ recSize }}</span></div>
+          </div>
+        </div>
+        <div style="font-size:14px;color:#5A6170">Also worth a look: <button onClick="{{ openAlt }}" style="background:none;border:0;padding:0;color:#E2583A;font-size:14px;font-weight:600">Zeston {{ alt.name }}</button></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <button onClick="{{ quizRestart }}" style="padding:15px;border-radius:999px;border:1.5px solid #0E1B3D;background:transparent;font-size:15px;font-weight:600;color:#0E1B3D">Retake quiz</button>
+          <button onClick="{{ openRec }}" style="padding:15px;border-radius:999px;border:0;background:#E2583A;color:#fff;font-size:15px;font-weight:600">View mattress</button>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ compareOpen }}">
+  <div style="position:fixed;inset:0;z-index:50;background:rgba(14,27,61,.5);display:flex;align-items:center;justify-content:center;padding:24px">
+    <div style="width:100%;max-width:960px;max-height:90vh;overflow:auto;background:#FFFFFF;border-radius:24px;padding:36px;display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:32px">Compare mattresses</h2><button onClick="{{ closeCompare }}" style="background:none;border:0;font-size:22px;color:#5A6170">×</button></div>
+      <div style="display:grid;grid-template-columns:150px repeat({{ cmpN }},minmax(0,1fr));gap:0 16px">
+        <div></div>
+        <sc-for list="{{ cmpProds }}" as="p"><div style="display:flex;flex-direction:column;gap:10px;padding-bottom:16px"><div style="aspect-ratio:4/3;border-radius:12px;background:url('{{ p.img }}') center/cover no-repeat #F2F4F8"></div><div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:22px">{{ p.name }}</div><button onClick="{{ p.open }}" style="align-self:start;padding:9px 16px;border-radius:999px;border:0;background:#E2583A;color:#fff;font-size:13px;font-weight:600">View</button></div></sc-for>
+        <sc-for list="{{ cmpRows }}" as="r">
+          <div style="padding:14px 0;border-top:1px solid #E3E7EE;font-size:14px;color:#5A6170">{{ r.k }}</div>
+          <sc-for list="{{ r.vals }}" as="v"><div style="padding:14px 0;border-top:1px solid #E3E7EE;font-size:15px">{{ v.t }}</div></sc-for>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ customOpen }}">
+  <div style="position:fixed;inset:0;z-index:50;background:rgba(14,27,61,.5);display:flex;align-items:center;justify-content:center;padding:24px">
+    <div style="width:100%;max-width:560px;background:#FFFFFF;border-radius:24px;padding:36px;display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#E2583A;font-weight:600">Custom size request</span><button onClick="{{ closeCustom }}" style="background:none;border:0;font-size:22px;color:#5A6170">×</button></div>
+      <sc-if value="{{ customForm }}">
+        <h2 style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:30px;line-height:1.15">Tell us your bed size. We'll quote within one working day.</h2>
+        <select style="padding:14px;border:1px solid #E3E7EE;border-radius:10px;font-size:15px;background:#fff">
+          <sc-for list="{{ customProds }}" as="o"><option>{{ o.l }}</option></sc-for>
+        </select>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+          <input placeholder="Length (in)" defaultValue="75" style="padding:14px;border:1px solid #E3E7EE;border-radius:10px;font-size:15px;background:#fff;min-width:0">
+          <input placeholder="Width (in)" defaultValue="66" style="padding:14px;border:1px solid #E3E7EE;border-radius:10px;font-size:15px;background:#fff;min-width:0">
+          <input placeholder="Thickness (in)" defaultValue="8" style="padding:14px;border:1px solid #E3E7EE;border-radius:10px;font-size:15px;background:#fff;min-width:0">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <input placeholder="Name" style="padding:14px;border:1px solid #E3E7EE;border-radius:10px;font-size:15px;background:#fff;min-width:0">
+          <input placeholder="Mobile number" style="padding:14px;border:1px solid #E3E7EE;border-radius:10px;font-size:15px;background:#fff;min-width:0">
+        </div>
+        <button onClick="{{ submitCustom }}" style="padding:16px;border-radius:999px;border:0;background:#E2583A;color:#fff;font-size:15px;font-weight:600">Request a quote</button>
+      </sc-if>
+      <sc-if value="{{ customDone }}">
+        <h2 style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:30px;line-height:1.15">Request received</h2>
+        <div style="font-size:16px;color:#5A6170;line-height:1.6">Reference <strong style="color:#0E1B3D">ZST-CS-1042</strong>. Our team will check feasibility and send a quote on WhatsApp within one working day.</div>
+        <button onClick="{{ closeCustom }}" style="padding:16px;border-radius:999px;border:0;background:#0E1B3D;color:#FFFFFF;font-size:15px;font-weight:600">Done</button>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ toast }}"><div style="position:fixed;top:92px;left:50%;transform:translateX(-50%);z-index:60;background:#0E1B3D;color:#FFFFFF;padding:12px 22px;border-radius:999px;font-size:14px;box-shadow:0 10px 30px rgba(14,27,61,.25)">{{ toast }}</div></sc-if>
+
+<sc-if value="{{ showWhatsApp }}"><button onClick="{{ waToast }}" style="position:fixed;right:24px;bottom:24px;z-index:40;padding:14px 20px;border-radius:999px;border:0;background:#1F7A50;color:#fff;font-size:14px;font-weight:600;white-space:nowrap;box-shadow:0 10px 30px rgba(14,27,61,.2)">Chat on WhatsApp</button></sc-if>
+
+<sc-if value="{{ showSwitcher }}">
+  <div style="position:fixed;left:24px;bottom:24px;z-index:40;background:#fff;border:1px solid #E3E7EE;border-radius:999px;padding:5px;display:flex;gap:2px;box-shadow:0 10px 30px rgba(14,27,61,.12);font-size:13px">
+    <span style="padding:8px 10px 8px 12px;color:#8A8F99;font-family:'JetBrains Mono',monospace;font-size:11px;align-self:center">DEMO</span>
+    <sc-for list="{{ screens }}" as="s" hint-placeholder-count="4"><button onClick="{{ s.go }}" style="padding:8px 14px;border-radius:999px;border:0;background:{{ s.bg }};color:{{ s.fg }};font-size:13px;font-weight:600">{{ s.l }}</button></sc-for>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startScreen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;shop&quot;,&quot;product&quot;,&quot;checkout&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showDemoSwitcher&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showWhatsApp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;quizOnLoad&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const SIZES=[{k:'single',l:'Single',d:'72 × 36',m:1},{k:'double',l:'Double',d:'72 × 48',m:1.32},{k:'queen',l:'Queen',d:'78 × 60',m:1.62},{k:'king',l:'King',d:'78 × 72',m:1.88}];
+const IMG={ortho:'images/mattress-room.webp',cloud:'images/mattress-corner.webp',hybrid:'images/mattress-room.webp',latex:'images/mattress-corner.webp',essential:'images/mattress-room.webp',dual:'images/mattress-corner.webp'};
+const PRODUCTS=[
+{id:'ortho',name:'Ortho Firm',type:'Orthopedic',firm:5,firmLabel:'Firm',base:11999,thick:'8 in',material:'Rebonded foam core with an HR foam comfort layer',short:'Even, firm support for back and stomach sleepers.',warranty:'10 years',tag:'Bestseller'},
+{id:'cloud',name:'Cloud Memory',type:'Memory foam',firm:2,firmLabel:'Medium-soft',base:14499,thick:'8 in',material:'Gel memory foam over a high-density support base',short:'Pressure relief at shoulders and hips for side sleepers.',warranty:'10 years',tag:''},
+{id:'hybrid',name:'Hybrid Pocket',type:'Pocket spring',firm:3,firmLabel:'Medium',base:18999,thick:'10 in',material:'Individually wrapped pocket springs with foam comfort layers',short:'Bounce and airflow with less partner disturbance.',warranty:'8 years',tag:'New'},
+{id:'latex',name:'Natural Latex',type:'Latex',firm:4,firmLabel:'Medium-firm',base:24999,thick:'8 in',material:'Natural latex core with an organic cotton cover',short:'Responsive, breathable support from natural latex.',warranty:'12 years',tag:''},
+{id:'essential',name:'Essential Foam',type:'Foam',firm:3,firmLabel:'Medium',base:7499,thick:'6 in',material:'PU foam with a quilted knit cover',short:'Everyday comfort for guest rooms and first homes.',warranty:'5 years',tag:'Value'},
+{id:'dual',name:'Dual Comfort',type:'Reversible',firm:3,firmLabel:'Soft / Firm',base:9999,thick:'6 in',material:'Two-sided foam with a soft side and a firm side',short:'Flip it to switch between a soft and a firm feel.',warranty:'7 years',tag:''}];
+const TYPES=['Orthopedic','Memory foam','Pocket spring','Latex','Foam','Reversible'];
+const QUIZ=[{key:'pos',q:'How do you usually sleep?',opts:['On my back','On my side','On my stomach','I move around']},{key:'firm',q:'How firm do you like your mattress?',opts:['Soft','Medium','Firm','Not sure']},{key:'size',q:'Which size do you need?',opts:['Single','Double','Queen','King']},{key:'budget',q:"What's your budget?",opts:['Under ₹10,000','₹10,000 – ₹20,000','₹20,000+','Flexible']}];
+const PAY=[{k:'upi',l:'UPI',d:'GPay, PhonePe, Paytm or any UPI app'},{k:'card',l:'Credit / debit card',d:'Visa, Mastercard, RuPay'},{k:'emi',l:'EMI',d:'No-cost EMI on select cards'},{k:'nb',l:'Net banking',d:'All major Indian banks'},{k:'cod',l:'Cash on delivery',d:'Available on selected PIN codes'}];
+const inr=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+const sz=k=>SIZES.find(s=>s.k===k)||SIZES[2];
+const priceFor=(p,k)=>Math.round(p.base*sz(k).m/100)*100-1;
+const mrpFor=(p,k)=>Math.round(priceFor(p,k)*1.35/100)*100-1;
+const byId=id=>PRODUCTS.find(p=>p.id===id);
+const dots=f=>[1,2,3,4,5].map(i=>({on:i<=f,off:i>f}));
+
+class Component extends DCLogic {
+  state={screen:this.props.startScreen??'home',pid:'ortho',size:'queen',
+    cart:[{key:'hybrid-queen',pid:'hybrid',size:'queen',name:'Zeston Hybrid Pocket',sub:'Queen · 78 × 60 in',price:priceFor(byId('hybrid'),'queen'),qty:1}],
+    bundle:false,pin:'',pinRes:null,types:[],firm:'All',sort:'pop',compare:[],compareOpen:false,
+    quiz:this.props.quizOnLoad?{step:0,a:{}}:null,custom:null,pay:'upi',coupon:'',couponOn:false,couponMsg:'',placed:false,toast:''};
+  go(screen,extra={}){this.setState({screen,...extra});window.scrollTo(0,0);}
+  flash(t){this.setState({toast:t});clearTimeout(this._t);this._t=setTimeout(()=>this.setState({toast:''}),2200);}
+  openProduct(id,size){this.go('product',{pid:id,size:size||this.state.size,bundle:false,pinRes:null,quiz:null,compareOpen:false});}
+  recFor(a){let id='hybrid';
+    if(a.budget==='Under ₹10,000') id=a.firm==='Firm'?'dual':'essential';
+    else if(a.budget==='₹20,000+') id='latex';
+    else if(a.firm==='Firm'||a.pos==='On my back'||a.pos==='On my stomach') id='ortho';
+    else if(a.firm==='Soft'||a.pos==='On my side') id='cloud';
+    return id;}
+  addCurrent(){const s=this.state,p=byId(s.pid),key=p.id+'-'+s.size;let cart=[...s.cart];
+    const ex=cart.find(c=>c.key===key);
+    if(ex) cart=cart.map(c=>c.key===key?{...c,qty:c.qty+1}:c);
+    else cart.push({key,pid:p.id,size:s.size,name:'Zeston '+p.name,sub:sz(s.size).l+' · '+sz(s.size).d+' in',price:priceFor(p,s.size),qty:1});
+    if(s.bundle&&!cart.find(c=>c.key==='pillow')) cart.push({key:'pillow',name:'Contour pillow pair',sub:'Bundle offer',price:1998,qty:1});
+    this.setState({cart,placed:false});}
+  card(p){const s=this.state,price=priceFor(p,s.size),mrp=mrpFor(p,s.size);
+    return {...p,img:IMG[p.id],dots:dots(p.firm),priceLabel:inr(price),mrpLabel:inr(mrp),off:Math.round((1-price/mrp)*100)+'% off',sizeNote:sz(s.size).l+' size price',
+      open:()=>this.openProduct(p.id),inCompare:s.compare.includes(p.id),
+      toggleCompare:()=>this.setState(st=>{const has=st.compare.includes(p.id);if(!has&&st.compare.length>=3){this.flash('You can compare up to 3 mattresses');return null;}return {compare:has?st.compare.filter(x=>x!==p.id):[...st.compare,p.id]};})};}
+  chip(on){return on?{bd:'#0E1B3D',bg:'#0E1B3D',fg:'#FFFFFF'}:{bd:'#E3E7EE',bg:'#fff',fg:'#0E1B3D'};}
+  renderVals(){
+    const s=this.state,prod=byId(s.pid)||PRODUCTS[0];
+    const firmOk=p=>s.firm==='All'||(s.firm==='Soft'&&p.firm<=2)||(s.firm==='Medium'&&p.firm===3)||(s.firm==='Firm'&&p.firm>=4);
+    let list=PRODUCTS.filter(p=>(!s.types.length||s.types.includes(p.type))&&firmOk(p));
+    if(s.sort==='low') list=[...list].sort((a,b)=>a.base-b.base);
+    if(s.sort==='high') list=[...list].sort((a,b)=>b.base-a.base);
+    const subtotalN=s.cart.reduce((t,c)=>t+c.price*c.qty,0),discN=s.couponOn?subtotalN*0.1:0;
+    const cmp=s.compare.map(byId);
+    const qStep=s.quiz?s.quiz.step:0,qa=s.quiz?s.quiz.a:{};
+    const recSizeK=(qa.size||'Queen').toLowerCase();
+    const recId=this.recFor(qa),rec=byId(recId),alt=byId(recId==='hybrid'?'cloud':'hybrid');
+    const showSwitcher=this.props.showDemoSwitcher??true;
+    return {
+      isHome:s.screen==='home',isShop:s.screen==='shop',isProduct:s.screen==='product',isCheckout:s.screen==='checkout',
+      goHome:()=>this.go('home'),goShop:()=>this.go('shop'),goCheckout:()=>this.go('checkout'),
+      goB2B:()=>{this.go('home');setTimeout(()=>{const el=document.getElementById('b2b');if(el)window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-90,behavior:'smooth'});},60);},
+      cartCount:s.cart.reduce((t,c)=>t+c.qty,0),
+      categories:[{name:'Orthopedic support',sub:'Firm support for back care',img:'images/mattress-room.webp',t:'Orthopedic'},{name:'Memory foam',sub:'Body-contouring comfort',img:'images/layers.webp',t:'Memory foam'},{name:'Pocket spring',sub:'Bounce and airflow',img:'images/features.webp',t:'Pocket spring'},{name:'Natural latex',sub:'Breathable and responsive',img:'images/mattress-corner.webp',t:'Latex'}].map(c=>({...c,go:()=>this.go('shop',{types:[c.t],firm:'All'})})),
+      featured:['ortho','hybrid','cloud'].map(id=>this.card(byId(id))),
+      b2bToast:()=>this.flash('B2B enquiry form opens here (demo)'),
+      shopList:list.map(p=>this.card(p)),shopCount:list.length,shopSizeLabel:sz(s.size).l,sort:s.sort,
+      setSort:e=>this.setState({sort:e.target.value}),
+      sizeChips:SIZES.map(x=>({l:x.l,...this.chip(s.size===x.k),pick:()=>this.setState({size:x.k})})),
+      firmChips:['All','Soft','Medium','Firm'].map(f=>({l:f,...this.chip(s.firm===f),pick:()=>this.setState({firm:f})})),
+      typeChecks:TYPES.map(t=>({l:t,on:s.types.includes(t),toggle:()=>this.setState(st=>({types:st.types.includes(t)?st.types.filter(x=>x!==t):[...st.types,t]}))})),
+      hasCompare:s.compare.length>0,compareCount:s.compare.length,compareNames:cmp.map(p=>p.name).join(', '),
+      clearCompare:()=>this.setState({compare:[]}),
+      openCompare:()=>s.compare.length<2?this.flash('Select at least 2 mattresses to compare'):this.setState({compareOpen:true}),
+      closeCompare:()=>this.setState({compareOpen:false}),compareOpen:s.compareOpen,
+      cmpN:Math.max(cmp.length,1),cmpProds:cmp.map(p=>({name:p.name,img:IMG[p.id],open:()=>this.openProduct(p.id)})),
+      cmpRows:[['Price ('+sz(s.size).l+')',p=>inr(priceFor(p,s.size))],['Type',p=>p.type],['Firmness',p=>p.firmLabel],['Thickness',p=>p.thick],['Material',p=>p.material],['Warranty',p=>p.warranty],['Sizes',()=>'Single, Double, Queen, King, Custom']].map(([k,f])=>({k,vals:cmp.map(p=>({t:f(p)}))})),
+      prod:{...prod,img:IMG[prod.id],dots:dots(prod.firm)},prodPrice:inr(priceFor(prod,s.size)),prodMrp:inr(mrpFor(prod,s.size)),prodOff:Math.round((1-priceFor(prod,s.size)/mrpFor(prod,s.size))*100)+'% off',
+      sizeOpts:SIZES.map(x=>({l:x.l,d:x.d,bd:s.size===x.k?'#0E1B3D':'#E3E7EE',bg:s.size===x.k?'#fff':'#F7F8FB',pick:()=>this.setState({size:x.k})})),
+      pin:s.pin,setPin:e=>this.setState({pin:e.target.value.replace(/\D/g,'').slice(0,6),pinRes:null}),
+      checkPin:()=>{const p=s.pin;let r;if(p.length!==6)r={ok:false,m:'Please enter a valid 6-digit PIN code.'};else if('123456'.includes(p[0]))r={ok:true,m:'Delivers to '+p+' by Thu, 3 Dec · free delivery'};else r={ok:false,m:"We don't deliver to "+p+" yet. Message us on WhatsApp and we'll try to arrange it."};this.setState({pinRes:r});},
+      pinOk:!!(s.pinRes&&s.pinRes.ok),pinBad:!!(s.pinRes&&!s.pinRes.ok),pinMsg:s.pinRes?s.pinRes.m:'',
+      bundle:s.bundle,toggleBundle:()=>this.setState({bundle:!s.bundle}),bundleBd:s.bundle?'#E2583A':'#E3E7EE',bundleBg:s.bundle?'#FDF0EC':'#fff',
+      addToCart:()=>{this.addCurrent();this.flash('Added to cart');},
+      buyNow:()=>{this.addCurrent();this.go('checkout');},
+      specs:[{k:'Type',v:prod.type},{k:'Material',v:prod.material},{k:'Firmness',v:prod.firmLabel},{k:'Thickness',v:prod.thick},{k:'Sizes',v:'Single, Double, Queen, King, Custom on request'},{k:'Cover',v:'Removable, washable knit fabric'},{k:'Warranty',v:prod.warranty+' manufacturing warranty'}],
+      compareThis:()=>this.go('shop',{compare:s.compare.includes(prod.id)?s.compare:[...s.compare.slice(0,2),prod.id]}),
+      warrantyToast:()=>this.flash('Warranty registration form opens here (demo)'),
+      waToast:()=>this.flash('Opens WhatsApp chat with Zeston (demo)'),
+      showPlaced:s.placed,showEmpty:!s.placed&&!s.cart.length,showForm:!s.placed&&s.cart.length>0,
+      cartItems:s.cart.map(c=>({...c,lineLabel:inr(c.price*c.qty),
+        inc:()=>this.setState(st=>({cart:st.cart.map(x=>x.key===c.key?{...x,qty:x.qty+1}:x)})),
+        dec:()=>this.setState(st=>({cart:st.cart.map(x=>x.key===c.key?{...x,qty:Math.max(1,x.qty-1)}:x)})),
+        remove:()=>this.setState(st=>({cart:st.cart.filter(x=>x.key!==c.key)}))})),
+      coupon:s.coupon,setCoupon:e=>this.setState({coupon:e.target.value}),
+      applyCoupon:()=>s.coupon.trim().toUpperCase()==='SLEEP10'?this.setState({couponOn:true,couponMsg:'SLEEP10 applied · 10% off'}):this.setState({couponOn:false,couponMsg:'That code is not valid. Try SLEEP10.'}),
+      couponMsg:s.couponMsg,couponOn:s.couponOn,
+      subtotal:inr(subtotalN),discount:inr(discN),total:inr(subtotalN-discN),
+      payOpts:PAY.map(o=>({...o,on:s.pay===o.k,bd:s.pay===o.k?'#0E1B3D':'#E3E7EE',bg:s.pay===o.k?'#F7F8FB':'#fff',pick:()=>this.setState({pay:o.k})})),
+      payLabel:(PAY.find(o=>o.k===s.pay)||PAY[0]).l,
+      placeOrder:()=>{this.setState({placed:true});window.scrollTo(0,0);},
+      resetOrder:()=>this.go('home',{placed:false,cart:[],couponOn:false,coupon:'',couponMsg:''}),
+      quizOpen:!!s.quiz,openQuiz:()=>this.setState({quiz:{step:0,a:{}}}),closeQuiz:()=>this.setState({quiz:null}),
+      quizAsking:!!s.quiz&&qStep<4,quizDone:!!s.quiz&&qStep>=4,
+      quizStepLabel:qStep<4?'Question '+(qStep+1)+' of 4':'Your result',
+      quizBars:[0,1,2,3].map(i=>({c:i<qStep||qStep>=4?'#E2583A':i===qStep?'#F0A08C':'#E3E7EE'})),
+      quizQ:qStep<4?QUIZ[qStep].q:'',
+      quizOpts:qStep<4?QUIZ[qStep].opts.map(l=>({l,pick:()=>this.setState(st=>({quiz:{step:st.quiz.step+1,a:{...st.quiz.a,[QUIZ[st.quiz.step].key]:l}}}))})):[],
+      quizCanBack:qStep>0&&qStep<4,quizBack:()=>this.setState(st=>({quiz:{...st.quiz,step:st.quiz.step-1}})),
+      quizRestart:()=>this.setState({quiz:{step:0,a:{}}}),
+      rec:{...rec,img:IMG[rec.id]},alt,recPrice:inr(priceFor(rec,recSizeK)),recSize:sz(recSizeK).l+' size',
+      openRec:()=>this.openProduct(recId,recSizeK),openAlt:()=>this.openProduct(alt.id,recSizeK),
+      customOpen:!!s.custom,customForm:!!s.custom&&!s.custom.done,customDone:!!(s.custom&&s.custom.done),
+      openCustom:()=>this.setState({custom:{done:false}}),closeCustom:()=>this.setState({custom:null}),submitCustom:()=>this.setState({custom:{done:true}}),
+      customProds:[prod,...PRODUCTS.filter(p=>p.id!==prod.id)].map(p=>({l:'Zeston '+p.name})),
+      toast:s.toast,showWhatsApp:this.props.showWhatsApp??true,showSwitcher,
+      screens:[['home','Home'],['shop','Shop'],['product','Product'],['checkout','Checkout']].map(([k,l])=>({l,bg:s.screen===k?'#0E1B3D':'transparent',fg:s.screen===k?'#FFFFFF':'#0E1B3D',go:()=>k==='product'?this.openProduct(s.pid):this.go(k)}))
+    };
+  }
+}
+</script>
+</body>
+</html>
