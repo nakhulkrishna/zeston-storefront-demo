@@ -41,7 +41,7 @@ button{font-family:inherit;cursor:pointer}input,select{font-family:inherit}
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
 <main data-screen-label="01 Home">
   <section style="max-width:1360px;margin:0 auto;padding:20px 24px 40px">
-    <div style="position:relative;border-radius:24px;overflow:hidden;min-height:600px;background:url('images/mattress-room.webp') center/cover no-repeat #F2F4F8;display:flex;align-items:center;padding:48px">
+    <div style="position:relative;border-radius:24px;overflow:hidden;min-height:600px;background:url('images/hero-bedroom.webp') center/cover no-repeat #F2F4F8;display:flex;align-items:center;padding:48px">
 
       <div style="position:relative;background:#fff;border-radius:20px;padding:44px;max-width:540px;display:flex;flex-direction:column;gap:22px;box-shadow:0 24px 60px rgba(14,27,61,.12)">
         <div style="display:flex;gap:8px;flex-wrap:wrap"><span style="background:#E2583A;color:#fff;font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;white-space:nowrap">Black Friday · up to 35% off</span><span style="background:#F2F4F8;color:#0E1B3D;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;white-space:nowrap">★ 4.6 · 3,200+ reviews</span></div>
@@ -121,6 +121,27 @@ button{font-family:inherit;cursor:pointer}input,select{font-family:inherit}
         <div><button onClick="{{ goShop }}" style="padding:12px 22px;border-radius:999px;border:1.5px solid #0E1B3D;background:transparent;font-size:14px;font-weight:600;color:#0E1B3D">Build your bundle</button></div>
       </div>
       <div style="aspect-ratio:3/4;border-radius:14px;background:url('images/mattress-corner.webp') center/cover no-repeat #F2F4F8;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px"></div>
+    </div>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:0 32px 72px">
+    <div style="display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:24px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:8px;max-width:640px">
+        <h2 style="margin:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:36px;letter-spacing:-.025em">Inside every Zeston</h2>
+        <div style="font-size:16px;color:#5A6170;line-height:1.5">The same build quality hotels and hospitals buy from us, layer by layer.</div>
+      </div>
+      <button onClick="{{ goShop }}" style="background:none;border:0;color:#E2583A;font-size:15px;font-weight:600">Find your mattress →</button>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+      <sc-for list="{{ tech }}" as="t" hint-placeholder-count="6">
+        <div style="background:#fff;border:1px solid #E3E7EE;border-radius:16px;overflow:hidden;display:flex;flex-direction:column">
+          <div style="aspect-ratio:4/3;background:url('{{ t.img }}') center/{{ t.fit }} no-repeat {{ t.bg }}"></div>
+          <div style="padding:20px;display:flex;flex-direction:column;gap:6px">
+            <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:20px">{{ t.t }}</div>
+            <div style="font-size:15px;color:#5A6170;line-height:1.5">{{ t.d }}</div>
+          </div>
+        </div>
+      </sc-for>
     </div>
   </section>
 
@@ -213,15 +234,14 @@ button{font-family:inherit;cursor:pointer}input,select{font-family:inherit}
   <div style="font-size:14px;color:#5A6170;margin-bottom:20px"><button onClick="{{ goShop }}" style="background:none;border:0;padding:0;color:#5A6170;font-size:14px">Mattresses</button> / {{ prod.name }}</div>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:56px;align-items:start">
     <div style="display:flex;flex-direction:column;gap:12px;position:sticky;top:96px">
-      <div style="aspect-ratio:1/1;border-radius:20px;background:url('{{ prod.img }}') center/cover no-repeat #F2F4F8;display:flex;align-items:center;justify-content:center;position:relative">
+      <div style="aspect-ratio:1/1;border-radius:20px;background:url('{{ prodMain }}') center/{{ prodFit }} no-repeat #F2F4F8;display:flex;align-items:center;justify-content:center;position:relative">
         
         <sc-if value="{{ prod.tag }}"><span style="position:absolute;top:18px;left:18px;background:#0E1B3D;color:#FFFFFF;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px">{{ prod.tag }}</span></sc-if>
       </div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
-        <div style="aspect-ratio:1/1;border-radius:12px;background:url('images/mattress-room.webp') center/cover no-repeat #F2F4F8;display:flex;align-items:center;justify-content:center;text-align:center;padding:6px;border:2px solid #0E1B3D"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#6B7385"></span></div>
-        <div style="aspect-ratio:1/1;border-radius:12px;background:url('images/layers.webp') center/cover no-repeat #F2F4F8;display:flex;align-items:center;justify-content:center;text-align:center;padding:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#6B7385"></span></div>
-        <div style="aspect-ratio:1/1;border-radius:12px;background:url('images/features.webp') center/cover no-repeat #F2F4F8;display:flex;align-items:center;justify-content:center;text-align:center;padding:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#6B7385"></span></div>
-        <div style="aspect-ratio:1/1;border-radius:12px;background:url('images/mattress-corner.webp') center/cover no-repeat #F2F4F8;display:flex;align-items:center;justify-content:center;text-align:center;padding:6px"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#6B7385"></span></div>
+        <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="8">
+          <button onClick="{{ g.pick }}" style="aspect-ratio:1/1;border-radius:12px;padding:0;cursor:pointer;background:url('{{ g.img }}') center/{{ g.fit }} no-repeat #F2F4F8;border:2px solid {{ g.bd }}"></button>
+        </sc-for>
       </div>
     </div>
 
@@ -357,7 +377,7 @@ button{font-family:inherit;cursor:pointer}input,select{font-family:inherit}
         <div style="font-size:18px;font-weight:600">Order summary</div>
         <sc-for list="{{ cartItems }}" as="c" hint-placeholder-count="2">
           <div style="display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:start">
-            <div style="width:64px;height:64px;border-radius:10px;background:url('images/mattress-corner-sm.webp') center/cover no-repeat #F2F4F8"></div>
+            <div style="width:64px;height:64px;border-radius:10px;background:url('{{ c.img }}') center/cover no-repeat #F2F4F8"></div>
             <div style="display:flex;flex-direction:column;gap:4px">
               <span style="font-size:15px;font-weight:600">{{ c.name }}</span>
               <span style="font-size:13px;color:#5A6170">{{ c.sub }}</span>
@@ -492,7 +512,9 @@ button{font-family:inherit;cursor:pointer}input,select{font-family:inherit}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;startScreen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;shop&quot;,&quot;product&quot;,&quot;checkout&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showDemoSwitcher&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;showWhatsApp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;quizOnLoad&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
 const SIZES=[{k:'single',l:'Single',d:'72 × 36',m:1},{k:'double',l:'Double',d:'72 × 48',m:1.32},{k:'queen',l:'Queen',d:'78 × 60',m:1.62},{k:'king',l:'King',d:'78 × 72',m:1.88}];
-const IMG={ortho:'images/mattress-room.webp',cloud:'images/mattress-corner.webp',hybrid:'images/mattress-room.webp',latex:'images/mattress-corner.webp',essential:'images/mattress-room.webp',dual:'images/mattress-corner.webp'};
+const IMG={ortho:'images/hero-bedroom.webp',cloud:'images/memory-foam-touch.webp',hybrid:'images/pocket-springs.webp',latex:'images/bedroom-loft.webp',essential:'images/bedroom-green.webp',dual:'images/mattress-edge.webp'};
+const GALLERY=[{img:'images/back-support.webp',fit:'cover'},{img:'images/layers.webp',fit:'cover'},{img:'images/features.webp',fit:'cover'},{img:'images/cooling-tech.webp',fit:'contain'},{img:'images/pressure-map.webp',fit:'cover'},{img:'images/details-collage.webp',fit:'cover'},{img:'images/spine-alignment.webp',fit:'cover'}];
+const TECH=[{img:'images/spine-alignment.webp',fit:'cover',bg:'#FDF3E7',t:'Spinal alignment',d:'Support zones keep your head, back and hips in a neutral line.'},{img:'images/pressure-map.webp',fit:'cover',bg:'#0E1B3D',t:'Even pressure',d:'Pressure-map tested so weight spreads evenly across the surface.'},{img:'images/cooling-tech.webp',fit:'contain',bg:'#EEF4FB',t:'Sleeps cooler',d:'A heat-dissipating comfort layer draws warmth away from your body.'},{img:'images/spring-tech.webp',fit:'cover',bg:'#E9EDF4',t:'Pocket spring support',d:'Individually wrapped springs for bounce, airflow and less partner disturbance.'},{img:'images/comparison.webp',fit:'contain',bg:'#262B3C',t:'More than basic foam',d:'Layered construction, orthopaedic support and stronger edges.'},{img:'images/lab-tested.webp',fit:'cover',bg:'#FDF0E6',t:'Tested in the lab',d:'Every design is tested for durability and support before it ships.'}];
 const PRODUCTS=[
 {id:'ortho',name:'Ortho Firm',type:'Orthopedic',firm:5,firmLabel:'Firm',base:11999,thick:'8 in',material:'Rebonded foam core with an HR foam comfort layer',short:'Even, firm support for back and stomach sleepers.',warranty:'10 years',tag:'Bestseller'},
 {id:'cloud',name:'Cloud Memory',type:'Memory foam',firm:2,firmLabel:'Medium-soft',base:14499,thick:'8 in',material:'Gel memory foam over a high-density support base',short:'Pressure relief at shoulders and hips for side sleepers.',warranty:'10 years',tag:''},
@@ -517,7 +539,7 @@ class Component extends DCLogic {
     quiz:this.props.quizOnLoad?{step:0,a:{}}:null,custom:null,pay:'upi',coupon:'',couponOn:false,couponMsg:'',placed:false,toast:''};
   go(screen,extra={}){this.setState({screen,...extra});window.scrollTo(0,0);}
   flash(t){this.setState({toast:t});clearTimeout(this._t);this._t=setTimeout(()=>this.setState({toast:''}),2200);}
-  openProduct(id,size){this.go('product',{pid:id,size:size||this.state.size,bundle:false,pinRes:null,quiz:null,compareOpen:false});}
+  openProduct(id,size){this.go('product',{gi:0,pid:id,size:size||this.state.size,bundle:false,pinRes:null,quiz:null,compareOpen:false});}
   recFor(a){let id='hybrid';
     if(a.budget==='Under ₹10,000') id=a.firm==='Firm'?'dual':'essential';
     else if(a.budget==='₹20,000+') id='latex';
@@ -552,7 +574,7 @@ class Component extends DCLogic {
       goHome:()=>this.go('home'),goShop:()=>this.go('shop'),goCheckout:()=>this.go('checkout'),
       goB2B:()=>{this.go('home');setTimeout(()=>{const el=document.getElementById('b2b');if(el)window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-90,behavior:'smooth'});},60);},
       cartCount:s.cart.reduce((t,c)=>t+c.qty,0),
-      categories:[{name:'Orthopedic support',sub:'Firm support for back care',img:'images/mattress-room.webp',t:'Orthopedic'},{name:'Memory foam',sub:'Body-contouring comfort',img:'images/layers.webp',t:'Memory foam'},{name:'Pocket spring',sub:'Bounce and airflow',img:'images/features.webp',t:'Pocket spring'},{name:'Natural latex',sub:'Breathable and responsive',img:'images/mattress-corner.webp',t:'Latex'}].map(c=>({...c,go:()=>this.go('shop',{types:[c.t],firm:'All'})})),
+      categories:[{name:'Orthopedic support',sub:'Firm support for back care',img:'images/back-support.webp',t:'Orthopedic'},{name:'Memory foam',sub:'Body-contouring comfort',img:'images/layers.webp',t:'Memory foam'},{name:'Pocket spring',sub:'Bounce and airflow',img:'images/spring-tech.webp',t:'Pocket spring'},{name:'Natural latex',sub:'Breathable and responsive',img:'images/mattress-room.webp',t:'Latex'}].map(c=>({...c,go:()=>this.go('shop',{types:[c.t],firm:'All'})})),
       featured:['ortho','hybrid','cloud'].map(id=>this.card(byId(id))),
       b2bToast:()=>this.flash('B2B enquiry form opens here (demo)'),
       shopList:list.map(p=>this.card(p)),shopCount:list.length,shopSizeLabel:sz(s.size).l,sort:s.sort,
@@ -566,7 +588,9 @@ class Component extends DCLogic {
       closeCompare:()=>this.setState({compareOpen:false}),compareOpen:s.compareOpen,
       cmpN:Math.max(cmp.length,1),cmpProds:cmp.map(p=>({name:p.name,img:IMG[p.id],open:()=>this.openProduct(p.id)})),
       cmpRows:[['Price ('+sz(s.size).l+')',p=>inr(priceFor(p,s.size))],['Type',p=>p.type],['Firmness',p=>p.firmLabel],['Thickness',p=>p.thick],['Material',p=>p.material],['Warranty',p=>p.warranty],['Sizes',()=>'Single, Double, Queen, King, Custom']].map(([k,f])=>({k,vals:cmp.map(p=>({t:f(p)}))})),
-      prod:{...prod,img:IMG[prod.id],dots:dots(prod.firm)},prodPrice:inr(priceFor(prod,s.size)),prodMrp:inr(mrpFor(prod,s.size)),prodOff:Math.round((1-priceFor(prod,s.size)/mrpFor(prod,s.size))*100)+'% off',
+      prod:{...prod,img:IMG[prod.id],dots:dots(prod.firm)},
+      ...(()=>{const g=[{img:IMG[prod.id],fit:'cover'},...GALLERY],gi=Math.min(s.gi||0,g.length-1);return {prodMain:g[gi].img,prodFit:g[gi].fit,gallery:g.map((x,i)=>({...x,bd:i===gi?'#0E1B3D':'transparent',pick:()=>this.setState({gi:i})}))};})(),
+      tech:TECH,prodPrice:inr(priceFor(prod,s.size)),prodMrp:inr(mrpFor(prod,s.size)),prodOff:Math.round((1-priceFor(prod,s.size)/mrpFor(prod,s.size))*100)+'% off',
       sizeOpts:SIZES.map(x=>({l:x.l,d:x.d,bd:s.size===x.k?'#0E1B3D':'#E3E7EE',bg:s.size===x.k?'#fff':'#F7F8FB',pick:()=>this.setState({size:x.k})})),
       pin:s.pin,setPin:e=>this.setState({pin:e.target.value.replace(/\D/g,'').slice(0,6),pinRes:null}),
       checkPin:()=>{const p=s.pin;let r;if(p.length!==6)r={ok:false,m:'Please enter a valid 6-digit PIN code.'};else if('123456'.includes(p[0]))r={ok:true,m:'Delivers to '+p+' by Thu, 3 Dec · free delivery'};else r={ok:false,m:"We don't deliver to "+p+" yet. Message us on WhatsApp and we'll try to arrange it."};this.setState({pinRes:r});},
@@ -579,7 +603,7 @@ class Component extends DCLogic {
       warrantyToast:()=>this.flash('Warranty registration form opens here (demo)'),
       waToast:()=>this.flash('Opens WhatsApp chat with Zeston (demo)'),
       showPlaced:s.placed,showEmpty:!s.placed&&!s.cart.length,showForm:!s.placed&&s.cart.length>0,
-      cartItems:s.cart.map(c=>({...c,lineLabel:inr(c.price*c.qty),
+      cartItems:s.cart.map(c=>({...c,img:IMG[c.pid]||'images/mattress-corner-sm.webp',lineLabel:inr(c.price*c.qty),
         inc:()=>this.setState(st=>({cart:st.cart.map(x=>x.key===c.key?{...x,qty:x.qty+1}:x)})),
         dec:()=>this.setState(st=>({cart:st.cart.map(x=>x.key===c.key?{...x,qty:Math.max(1,x.qty-1)}:x)})),
         remove:()=>this.setState(st=>({cart:st.cart.filter(x=>x.key!==c.key)}))})),
